@@ -27,30 +27,43 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa") // Добавлен JPA starter
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // Мониторинг и метрики
     implementation("io.micrometer:micrometer-registry-prometheus")
 
-    // Базы данных (раскомментируйте нужную)
-    // runtimeOnly("com.h2database:h2")
+    // База данных для production (раскомментируйте нужную)
     // runtimeOnly("org.postgresql:postgresql")
+    // runtimeOnly("com.mysql:mysql-connector-j")
+
+    // База данных для тестирования (H2 in-memory)
+    runtimeOnly("com.h2database:h2")
 
     // Утилиты
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
 
     // Тестирование
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.testcontainers:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    // Используем in-memory H2 для тестов
+    systemProperty("spring.profiles.active", "test")
+    // Показываем стандартный вывод и ошибки тестов
+    testLogging {
+        events("passed", "skipped", "failed")
+        showStandardStreams = true
+    }
 }
 
 tasks.named<BootJar>("bootJar") {
-    // Упрощенная конфигурация для Spring Boot 3.5.5
     layered {
         enabled = true
     }
