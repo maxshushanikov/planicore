@@ -33,6 +33,14 @@ tasks.withType<Test> {
 // Настройка слоев для оптимизации Docker образа
 tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
     layered {
+        // Добавьте этот параметр - он обязателен при использовании кастомного слоения
+        layerOrder = listOf(
+            "dependencies",
+            "spring-boot-loader",
+            "snapshot-dependencies",
+            "application"
+        )
+
         application {
             intoLayer("spring-boot-loader")
             intoLayer("dependencies")
