@@ -1,4 +1,4 @@
-package org.planicore;
+package org.planicore.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
