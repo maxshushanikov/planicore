@@ -1,9 +1,7 @@
 package org.planicore.server.service;
 
 import org.planicore.server.domain.Task;
-import org.planicore.server.dto.TaskCreateRequest;
-import org.planicore.server.dto.TaskResponse;
-import org.planicore.server.dto.TaskUpdateRequest;
+import org.planicore.server.dto.*;
 import org.planicore.server.mapper.TaskMapper;
 import org.planicore.server.repository.TaskRepository;
 import org.springframework.stereotype.Service;
@@ -29,11 +27,15 @@ public class TaskService {
     }
 
     public List<TaskResponse> findAll() {
-        return repository.findAll().stream().map(mapper::toResponse).toList();
+        return repository.findAll()
+                .stream()
+                .map(mapper::toResponse)
+                .toList();
     }
 
     public TaskResponse findById(Long id) {
-        return repository.findById(id).map(mapper::toResponse)
+        return repository.findById(id)
+                .map(mapper::toResponse)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
     }
 
@@ -45,6 +47,9 @@ public class TaskService {
     }
 
     public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("Task not found");
+        }
         repository.deleteById(id);
     }
 }

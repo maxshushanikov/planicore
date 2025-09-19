@@ -1,8 +1,6 @@
 package org.planicore.server.controller;
 
-import org.planicore.server.dto.TaskCreateRequest;
-import org.planicore.server.dto.TaskResponse;
-import org.planicore.server.dto.TaskUpdateRequest;
+import org.planicore.server.dto.*;
 import org.planicore.server.service.TaskService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

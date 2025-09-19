@@ -20,6 +20,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  flyway:
+    enabled: false
 
 ---
 spring:
@@ -27,7 +29,7 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:postgresql://localhost:5432/todo
+    url: jdbc:postgresql://db:5432/todo
     driver-class-name: org.postgresql.Driver
     username: todo
     password: todo
