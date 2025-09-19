@@ -32,6 +32,10 @@ dependencies {
     // Мониторинг и метрики
     implementation("io.micrometer:micrometer-registry-prometheus")
 
+    // MapStruct для маппинга DTO ↔ Entity
+    implementation("org.mapstruct:mapstruct:1.5.5.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
+
     // База данных для production (раскомментируйте нужную)
     // runtimeOnly("org.postgresql:postgresql")
     // runtimeOnly("com.mysql:mysql-connector-j")
