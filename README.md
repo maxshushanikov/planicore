@@ -1,4 +1,4 @@
-# `planicore` — REST API for Task Management (To-Do)
+# chronyqor — REST API for Task Management (To-Do)
 
 This project is a modern Spring Boot application that implements a RESTful API for managing tasks (To-Do). It is built using best practices and includes automated CI/CD pipelines, containerization, and comprehensive testing tools.
 
@@ -6,7 +6,7 @@ This project is a modern Spring Boot application that implements a RESTful API f
 
 ## 📋 Overview
 
-**`planicore`** is the backend component of a task management application. It provides full CRUD operations (Create, Read, Update, Delete) for the `Task` entity, along with standard monitoring endpoints via Spring Boot Actuator.
+**`chronyqor`** is the backend component of a task management application. It provides full CRUD operations (Create, Read, Update, Delete) for the `Task` entity, along with standard monitoring endpoints via Spring Boot Actuator.
 
 ### 🔧 Features
 - Create a new task (`POST /api/v1/tasks`)
